@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch.js";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,10 @@ function Create() {
   let navigate = useNavigate();
 
   let addCategory = (e) => {
+    if(newcategory && categories.includes(newcategory)){
+      setNewCategory('')
+      return;
+    }
     setCategories(prev => [newcategory, ...prev]);
     setNewCategory("")
   }
