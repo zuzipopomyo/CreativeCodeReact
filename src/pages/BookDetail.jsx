@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-key */
-
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { db } from '../assets/firebase/index.js';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import bookimg from "../assets/bookcover.jpeg"
+
+
 export default function BookDetail() {
     let { id } = useParams();
     let [error, setError] = useState('');
@@ -14,7 +15,7 @@ export default function BookDetail() {
     useEffect(() => {
         setLoading(true);
         let ref = doc(db, 'books', id);
-        getDoc(ref).then(doc => {
+        onSnapshot(ref,doc => {
             if (doc.exists()) {
                 let book = { id: doc.id, ...doc.data() };
                 setBook(book);
@@ -24,10 +25,7 @@ export default function BookDetail() {
                 setError('No document found');
                 setLoading(false);
             }
-        }).catch(err => {
-            setError('Failed to fetch document');
-            setLoading(false);
-        });
+        })
     }, [id]);
 
     return (
@@ -36,8 +34,9 @@ export default function BookDetail() {
             {loading && <p>Loading...</p>}
             {book && (
                 <div className={`grid grid-cols-2 mx-[10rem] my-[3rem] h-screen`}>
-                    <div>
+                    <div className='flex '>
                         <img src={bookimg} alt="Book cover" />
+                        
                     </div>
                     <div className='space-y-5'>
                         <h1>{book.title}</h1>

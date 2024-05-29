@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyBXngi_sKHAt-Ajrx8FH8KEnreLBPBCmgc",
@@ -14,5 +15,6 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
 
   let db = getFirestore(app);
+  let auth = getAuth(app);
 
-  export {db}
+  export {db,auth}
