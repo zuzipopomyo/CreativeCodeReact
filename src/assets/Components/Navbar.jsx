@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useTheme from '../../hooks/useTheme';
 import useLogOut from '../../hooks/useLogout';
-import { AuthContext } from '../../pages/Contexts/AuthContext';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 
 export default function Navbar() {
@@ -23,7 +23,7 @@ export default function Navbar() {
 
     //auth contextProvider
     let {user} = useContext(AuthContext);
-    console.log(user)
+ 
 
     return (
         <nav  className={`border border-b-1 ${isDark ? 'bg-black border-blue-500' : ''}`}>

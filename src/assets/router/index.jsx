@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 
 import {Navigate, RouterProvider, createBrowserRouter} from "react-router-dom";
 import Layout from "../Layout/Layout";
@@ -8,7 +9,7 @@ import BookForm from "../../pages/BookForm";
 import Login from "../../pages/Login";
 import { Register } from "../../pages/Register"
 import { useContext } from "react";
-import { AuthContext } from "../../pages/Contexts/AuthContext";
+import { AuthContext } from "../../Contexts/AuthContext";
   
   export default function index() {
 
